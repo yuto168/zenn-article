@@ -1,8 +1,8 @@
 ---
-title: ""
+title: "obsidianで記憶定着を図るための仕組みづくり"
 emoji: "🔖"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: [obsidianで記憶定着を図るための仕組みづくり]
+topics: []
 published: false
 ---
 
