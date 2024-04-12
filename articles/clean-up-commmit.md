@@ -29,6 +29,7 @@ git rebase を使えばコミットを一気に整理できるので、その手
 ## 手順
 
 ```sh
+# commit番号を取得
 git log --oneline
 ```
 
@@ -37,15 +38,18 @@ git log --oneline
 commit2~3 をまとめたいので commit1 に移動
 
 ```sh
-git rebase --i {{コミット番号}}
+# git rebase --i {{コミット番号}}
+$ git rebase --i 6904133
 ```
 
-コマンドの結果が出ます。
-この時コメントでその後のコマンドの詳細が載っています。
+このような画面になります。
 
 ```sh
 pick 7dfbbc5 commit2
 pick c5e4e0a commit3
+
+
+# コメントでその後のコマンドの詳細が載っています。
 
 # Rebase 6904133..c5e4e0a onto 6904133 (2 commands)
 #
@@ -57,28 +61,28 @@ pick c5e4e0a commit3
 ......
 ```
 
-今回のケースでは commit2 と commit3 をまとめたいので、Squash を使います。
+今回のケースでは commit2 と commit3 をまとめたいので、squash を使います。
 
-コメントにも書かれている通りで
+squash とはコメントにも書かれている通りで
 
 ```sh
 # s, squash <commit> = use commit, but meld into previous commit
 ```
 
-"指定したコミットをそのまま直前のコミット"に取り込むという意味です。
+"指定したコミットをそのまま直前のコミット"に取り込んでくれます。
 
-commmit3 を commit2 に取り込みたいので、次のように編集します。
-
-vim での編集に慣れていない人はこちらが参考になります。
-https://qiita.com/hide/items/5bfe5b322872c61a6896
+今回のケースでは commmit3 を commit2 に取り込みたいので、次のように編集します。
 
 ```sh
 pick 7dfbbc5 commit2
 s c5e4e0a
 ```
 
+※vim での編集に慣れていない人はこちらが参考になります。
+https://qiita.com/hide/items/5bfe5b322872c61a6896
+
 コマンド結果が表示されます。
-ここでコメントを変更できます。
+因みにこのタイミングで commit メッセージを変更できます。
 
 そのままでよければ上書き保存します。
 
@@ -104,7 +108,7 @@ commit3
 
 ![alt text](/images/image-2.png)
 
-# ２つ以上の commit をまとめたい
+# 【補足】２つ以上の commit をまとめる場合
 
 ## ケース
 
