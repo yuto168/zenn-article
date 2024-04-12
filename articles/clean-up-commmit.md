@@ -24,7 +24,7 @@ git rebase を使えばコミットを一気に整理できるので、その手
 
 すでにコミット済みの commit2 に commit3 をまとめればよかった....(直前の commit だとリセットすりゃ楽ですが例ということで勘弁。。。)
 
-![alt text](../images/image.png)
+![alt text](/images/image.png)
 
 ## 手順
 
@@ -32,7 +32,7 @@ git rebase を使えばコミットを一気に整理できるので、その手
 git log --oneline
 ```
 
-![alt text](../images/image-1.png)
+![alt text](/images/image-1.png)
 
 commit2~3 をまとめたいので commit1 に移動
 
@@ -102,7 +102,7 @@ commit3
 
 これで commit3 の内容が commit2 にまとめられます。
 
-![alt text](../images/image-2.png)
+![alt text](/images/image-2.png)
 
 # ２つ以上の commit をまとめたい
 
@@ -110,7 +110,7 @@ commit3
 
 commit3 と commit4 って commit2 にまとめるべきやったな...
 
-![alt text](../images/image-3.png)
+![alt text](/images/image-3.png)
 
 ## 手順
 
@@ -132,6 +132,6 @@ s c8129f1
 
 まとめられました。
 
-![alt text](../images/image-4.png)
+![alt text](/images/image-4.png)
 
 今までは Source Tree 等の GUI を使って reset ばかりやっていましたが、作業効率を上げるにはコマンドの方が早いですね。
