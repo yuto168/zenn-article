@@ -87,6 +87,4 @@ https://zenn.dev/perilla/scraps/351f43bfcd13ec
 
 https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
-https://blog.systemi.co.jp/sharing-ssh-key-with-container/
-
 https://code.visualstudio.com/remote/advancedcontainers/sharing-git-credentials
