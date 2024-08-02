@@ -1,13 +1,13 @@
 ---
-title: "[Nuxt]Fetch APIでShift_JISのCSVファイルをダウンロードする"
+title: "[Nuxt]API経由で文字コードがShift_JISのCSVファイルをダウンロードする"
 emoji: "🕌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [Nuxt, JavaScript, vue]
-published: false
+published: true
 ---
 
-案件で API から Shift_JIS の CSV ファイルをダウンロードする必要がありましたが、その際に大分はまってしまいました。
-他の記事には API 経由で Shift_JIS の CSV ファイルをダウンロードする記事があまり見当たらなかったのもあり、備忘録として残しておきます。
+案件で API 経由で Shift_JIS の CSV ファイルをダウンロードする必要がありましたが、その際に大分はまってしまいました。
+他の記事に API 経由で Shift_JIS の CSV ファイルをダウンロードする記事があまり見当たらなかったのもあり、備忘録として残しておきます。
 
 # 動作環境
 
@@ -16,8 +16,9 @@ published: false
 
 # はまったポイント
 
-以下のように$fetch()を使ってダウンロードを実行しました。
-API を叩いて、CSV ファイルをダウンロードする処理です。
+レスポンスは下記の想定です。
+
+Shift_JIS でエンコードされた CSV ファイルをダウンロードする想定です。
 
 ```
 <!-- API レスポンスヘッダ -->
@@ -25,6 +26,8 @@ API を叩いて、CSV ファイルをダウンロードする処理です。
 content-disposition: attachment; filename="hoge.csv"
 content-type: text/csv;
 ```
+
+API を$fetch()で叩いて、CSV ファイルをダウンロードする処理を実装しました。
 
 ```ts : composables/csv.ts
 /**CSVテキスト取得 */
@@ -51,9 +54,9 @@ const downloadCsv = async () => {
 };
 ```
 
-しかし、ダウンロードした CSV ファイルを開いてみると、文字化けしていました。
+ダウンロードはうまくいきましたが、 CSV ファイルを開いてみると、文字化けしていました。
 
-# 何が良くないのか
+# 問題点
 
 どうやら fetch()の Response や Blob は テキストを UTF-8 として扱っているようです。
 そのため、何も考えずにデータを Blob に持たせてダウンロード実行しても、文字化けしてしまいました。
@@ -98,4 +101,4 @@ const downloadCsv = async () => {
 };
 ```
 
-これで Shift_JIS の CSV ファイルをダウンロードすることができました。
+UTF-8 以外のエンコーディングのファイルをダウンロードする場合は、注意が必要なので忘れずにしたいですね。
