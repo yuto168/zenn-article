@@ -1,6 +1,6 @@
 ---
 title: "[Nuxt]API経由で文字コードがShift_JISのCSVファイルをダウンロードする"
-emoji: "🕌"
+emoji: "🐿️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [Nuxt, JavaScript, vue]
 published: true
